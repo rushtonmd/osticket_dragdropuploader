@@ -42,7 +42,7 @@ DragDropLib.setConfigurationSettings =  function(){
    DragDropLib.query_id = DragDropLib.getQueryParam('id');
    DragDropLib.uploadUrl = $('#replyform').attr('action');
    DragDropLib.ticket_id = $("input:hidden[name=ticket_id]").val();
-   DragDropLib.replaceUrl = DragDropLib.uploadUrl.split('#')[0];
+   DragDropLib.reloadUrl = DragDropLib.uploadUrl.split('#')[0];
    DragDropLib.msg_id = $("input:hidden[name=msg_id]").val();
 
    // These are used for the dynamic tracking of file uploads
@@ -132,19 +132,26 @@ DragDropLib.dropEvent = function(e){
                     contentType: false,
                     processData: false,
                     success:function(rponse){
-
+                            // A file is finished uploading
                             DragDropLib.totalFilesUploaded++;
+                            
+                            // If there are more files, continue uploading
                             if(DragDropLib.totalFilesUploaded < DragDropLib.totalFilesDropped)
                             $(DragDropLib.divContainerTextID).text(DragDropLib.totalFilesUploaded + ' of '+ DragDropLib.totalFilesDropped +' uploaded.');
-                            else{
+                            else{ 
+                                // All files are finished, replace the list with the response list
                                 $('#loadingBar').hide();
-                                $(DragDropLib.divContainerTextID).text('Reloading!');
-                                window.location = DragDropLib.replaceUrl;
+                                $(DragDropLib.divContainerTextID).text('Drop files here...');
+                                $('#ticketthread').fadeOut("slow", function(){
+                                    $(this).replaceWith($('#ticketthread', $(rponse)));
+                                    $('#ticketthread').fadeIn("slow");
+                                });
+                                
                             }
                     },
                     error:function(rponse){
                         alert("There was a problem with your upload!");
-                        location.reload();
+                        window.location = DragDropLib.reloadUrl;
                     }
             });
       }

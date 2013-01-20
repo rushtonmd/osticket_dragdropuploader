@@ -150,6 +150,7 @@ DragDropLib.dropEvent = function(e){
                             }
                     },
                     error:function(rponse){
+                        // There was an error with the upload
                         alert("There was a problem with your upload!");
                         window.location = DragDropLib.reloadUrl;
                     }

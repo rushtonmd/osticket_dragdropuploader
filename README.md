@@ -14,23 +14,13 @@ The Drag and Drop upload plugin for osTicket v1.6 will work in all modern broswe
 	- HTML5
 
 ## How to use
-	
-### Config
-	
-All Fields required.
-	
-	support : "image/jpg,image/png,image/bmp,image/jpeg,image/gif",		// Valid file formats
-	form: "demoFiler",					// Form ID
-	dragArea: "dragAndDropFiles",		// Upload Area ID
-	uploadUrl: "upload.php"				// Server side file url
-	
-### Init
 
- 1. Copy the dragdropuploader into the root directory of osTicket
- 2. In the scp/tickets.php file:
+ 1. Create a directory in the root of osTicket named 'dragdropuploader'
+ 2. Copy the contents (css, js, and uploader.php) into the dragdropuploader directory
+ 3. In the scp/tickets.php file:
         Below this line: require_once(INCLUDE_DIR.'class.banlist.php');
         Add this line: require_once(ROOT_PATH.'/dragdropuploader/uploader.php');
- 3. Drag and drop some files!	
+ 4. Drag and drop some files!	
 
 
 

@@ -2,6 +2,8 @@
 
 This drag and drop upload plugin for osTicket v1.6 will work in all modern broswers with HTML5 compatability.
 
+osTicket: http://osticket.com/
+
 ## Description
 
 When a ticket is updated in osTicket, you are able to add a single file to the reply. I always thought this was a bit restricting, and wanted an easy way to upload many files. 

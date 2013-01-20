@@ -1,4 +1,3 @@
-
 /*************************************************************************
     uploader.js
  
@@ -64,6 +63,8 @@ DragDropLib.initializeDiv = function(){
 };
 
 DragDropLib.setupListeners = function(){
+    
+    // If everything checks out, setup the listeners for the drag drop area
     if (window.File && window.FileReader && window.FileList && window.Blob) {	
              $(DragDropLib.divContainerID).bind('dragover', DragDropLib.dragOverEvent);
              $(DragDropLib.divContainerID).bind('dragleave', DragDropLib.dragLeaveEvent);
@@ -74,13 +75,19 @@ DragDropLib.setupListeners = function(){
 };
   
 DragDropLib.dragOverEvent = function(e){
+    
+    // Stop any default behaviors
     e.stopPropagation(); 
     e.preventDefault(); 
+    
+    // Add the class 'hover' to the drag drop area
     $(DragDropLib.divContainerID).addClass('hover');
     
 };
 
 DragDropLib.dragLeaveEvent = function(e){
+    
+    // Remove the class 'hover' to the drag drop area
     $(DragDropLib.divContainerID).removeClass('hover');
 };
 
@@ -90,26 +97,33 @@ DragDropLib.dropEvent = function(e){
     e.stopPropagation(); 
     e.preventDefault();
 
+    // Add the class 'hover' to the drag drop area
     $(DragDropLib.divContainerID).removeClass('hover');
 
+    // Get all the files that were dropped
     DragDropLib.filesDropped = e.dataTransfer.files;
     DragDropLib.totalFilesDropped = e.dataTransfer.files.length;
     DragDropLib.totalFilesUploaded = 0;
 
+    // Set the text of the feedback text
     $(DragDropLib.divContainerTextID).text('0'+' of '+ DragDropLib.totalFilesDropped +' uploaded.');
     
+    // Show the loading progress bar
     $('#loadingBar').show();
 
+    // Loop through the files and uplaod
     for (var i = 0; i < DragDropLib.totalFilesDropped; i++) {
         
         var data = new FormData();
 
+            // Create the form element
             data.append('ticket_id', DragDropLib.ticket_id);
             data.append('msg_id', DragDropLib.msg_id);
             data.append('a', 'reply');
             data.append('response', ' ' + $('#response').val()); // There has to be a response, even if it's a space character
             data.append('attachment',DragDropLib.filesDropped[i]);
             
+            // Make the ajax request
             $.ajax({
                     type:"POST",
                     url:DragDropLib.uploadUrl,

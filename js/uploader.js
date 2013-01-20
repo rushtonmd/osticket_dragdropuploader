@@ -143,7 +143,8 @@ DragDropLib.dropEvent = function(e){
                                 $('#loadingBar').hide();
                                 $(DragDropLib.divContainerTextID).text('Drop files here...');
                                 $('#ticketthread').fadeOut("slow", function(){
-                                    $(this).replaceWith($('#ticketthread', $(rponse)));
+                                    var newDiv = $('#ticketthread', $(rponse)).hide();
+                                    $(this).replaceWith(newDiv);
                                     $('#ticketthread').fadeIn("slow");
                                 });
                                 

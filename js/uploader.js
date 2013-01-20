@@ -37,6 +37,7 @@ DragDropLib.setConfigurationSettings =  function(){
     // All the configuration settings for the library
 
    DragDropLib.divContainerName = 'dragDropArea';
+   DragDropLib.initialMessage = 'Drop files here...';
    DragDropLib.divContainerID = '#' + DragDropLib.divContainerName; // This just helps make jquery calls a little cleaner
    DragDropLib.divContainerTextID = DragDropLib.divContainerID + ' H1';
    DragDropLib.query_id = DragDropLib.getQueryParam('id');
@@ -56,7 +57,7 @@ DragDropLib.initializeDiv = function(){
    // Find the div that has the attachments upload input, and insert a div for our drag-drop box
    $('#attachment').parent().before('<div id="'+ DragDropLib.divContainerName + '" class="uploadArea"></div>');
    
-   $(DragDropLib.divContainerID).append('<h1>Drop files here...</h1> <div id="loadingBar"><div id="loadingProgressG" style="margin-left: auto; margin-right: auto; margin-top: 60px;"><div id="loadingProgressG_1" class="loadingProgressG"></div></div></div>');
+   $(DragDropLib.divContainerID).append('<h1>'+DragDropLib.initialMessage+'</h1> <div id="loadingBar"><div id="loadingProgressG" style="margin-left: auto; margin-right: auto; margin-top: 60px;"><div id="loadingProgressG_1" class="loadingProgressG"></div></div></div>');
 
    // This function returns false if the div wasn't created properly
    return ($(DragDropLib.divContainerID).length); 
@@ -137,15 +138,16 @@ DragDropLib.dropEvent = function(e){
                             
                             // If there are more files, continue uploading
                             if(DragDropLib.totalFilesUploaded < DragDropLib.totalFilesDropped)
-                            $(DragDropLib.divContainerTextID).text(DragDropLib.totalFilesUploaded + ' of '+ DragDropLib.totalFilesDropped +' uploaded.');
+                            $(DragDropLib.divContainerTextID).text(DragDropLib.totalFilesUploaded + ' of '+ DragDropLib.totalFilesDropped +' uploaded');
                             else{ 
                                 // All files are finished, replace the list with the response list
-                                $('#loadingBar').hide();
-                                $(DragDropLib.divContainerTextID).text('Drop files here...');
+                                $(DragDropLib.divContainerTextID).text('Updating list!');
                                 $('#ticketthread').fadeOut("slow", function(){
                                     var newDiv = $('#ticketthread', $(rponse)).hide();
                                     $(this).replaceWith(newDiv);
                                     $('#ticketthread').fadeIn("slow");
+                                    $('#loadingBar').hide();
+                                    $(DragDropLib.divContainerTextID).text(DragDropLib.initialMessage);
                                 });
                                 
                             }

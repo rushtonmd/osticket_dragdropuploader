@@ -4,14 +4,14 @@ The Drag and Drop upload plugin for osTicket v1.6 will work in all modern broswe
 
 ## File & Folders
 
- - /css 	-	Stylesheet files
- - /js  	-	Javascript files and libraries
+ - /css 	-	Stylesheet
+ - /js  	-	Javascript files
  - uploader.php -	Template file to load scripts
 
 ## Requirements
 
-	- Jquery Library (version 1.7+)
-	- HTML5
+	- osTicket 1.6
+	- HTML5 compatable browser
 
 ## How to use
 

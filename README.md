@@ -29,6 +29,11 @@ After this plugin in installed, it adds a Drag-and-Drop area directly above the 
  	- Below this line: require_once(INCLUDE_DIR.'class.banlist.php'); <br>
  	- Add this line: require_once(ROOT_PATH.'/dragdropuploader/uploader.php');
  4. Drag and drop some files!	
+ 
+## Notes
+
+ 1. The directory MUST be in the root, and MUST be named 'dragdropuploader'. If you'd like to move or change the directory, then some of the paths in the .js and uploader.php file will need to change.
+ 2. This works well for a new installation of osTicket 1.6. If you've made customizations, it may not work as expected.
 
 
 

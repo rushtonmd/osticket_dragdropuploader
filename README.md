@@ -35,6 +35,8 @@ After this plugin in installed, it adds a Drag-and-Drop area directly above the 
  1. The directory MUST be in the root, and MUST be named 'dragdropuploader'. If you'd like to move or change the directory, then some of the paths in the .js and uploader.php file will need to change.
  2. This works well for a new installation of osTicket 1.6. If you've made customizations, it may not work as expected.
 
+## Aside
 
+Creating these features for osTicket was a small weekend side project and I personally hope someone finds it useful! RASHER 4 LIFE!
 
 	

@@ -1,6 +1,5 @@
 .uploadArea {
-min-height:100px;
-height:auto;
+height:100px;
 border:2px dotted #ccc;
 cursor:move;
 margin:10px 0;

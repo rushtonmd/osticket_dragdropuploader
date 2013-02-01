@@ -2,7 +2,7 @@
 
 This drag and drop upload plugin for osTicket v1.6 will work in all modern broswers with HTML5 compatability.
 
-osTicket: http://osticket.com/
+osTicket: http://osticket.com
 
 ## Description
 
